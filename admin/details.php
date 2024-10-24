@@ -1,4 +1,5 @@
 <?php
+include("db/db.php");
 session_start();
 if(!isset($_SESSION['email'])){
     header("location: login.php");
@@ -9,7 +10,7 @@ if(!isset($_SESSION['email'])){
     
       $_SESSION['id']=$row['cid'];
     }
-include("db/db.php");
+
 if(isset($_POST['submit'])){
     $pass = $_POST['pass'];
     $cpass = $_POST['cpass'];
