@@ -1,5 +1,14 @@
 <?php
 session_start();
+if(!isset($_SESSION['email'])){
+    header("location: login.php");
+  }else{
+      $sql="SELECT * FROM recruiter";
+      $rs= $con->query($sql);
+      $row=$rs->fetch_assoc();
+    
+      $_SESSION['id']=$row['cid'];
+    }
 include("db/db.php");
 if(isset($_POST['submit'])){
     $pass = $_POST['pass'];
@@ -13,15 +22,6 @@ if(isset($_POST['submit'])){
         $err = "Password do not match";
     }
 }
-if(!isset($_SESSION['email'])){
-  header("location: login.php");
-}else{
-    $sql="SELECT * FROM recruiter";
-    $rs= $con->query($sql);
-    $row=$rs->fetch_assoc();
-  
-    $_SESSION['id']=$row['cid'];
-  }
 ?>
 
 <!DOCTYPE html>
