@@ -1,6 +1,7 @@
 <?php
 include("../../db/db.php");
 if(isset($_POST['save'])){
+    $cid = $_SESSION['rid'];
     $jobrole=$_POST['jobrole'];
     $jobtype=$_POST['jobtype'];
     $jobcat=$_POST['jobcat'];
@@ -13,7 +14,7 @@ if(isset($_POST['save'])){
     $state=$_POST['state'];
     $pin=$_POST['pin'];
 
-    $ins="INSERT INTO jobs SET role='$jobrole', type='$jobtype', jcat='$jobcat', exp='$exprience', min_salary='$min', max_salary='$max', about='$about', country='$country', city='$city', state='$state', pin='$pin' ";
+    $ins="INSERT INTO jobs SET role='$jobrole', type='$jobtype', jcat='$jobcat', exp='$exprience', min_salary='$min', max_salary='$max', about='$about', country='$country', city='$city', state='$state', pin='$pin', rid='$cid' ";
     $con->query($ins);
     header("location:../../listjob.php");
 }else {

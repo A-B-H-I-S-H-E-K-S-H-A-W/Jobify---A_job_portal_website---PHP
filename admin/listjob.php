@@ -39,25 +39,42 @@ if(!isset($_SESSION['email'])){
           <div class="flex flex-col">
 
           <?php 
-          $sel = "SELECT recruiter.*, jobs.* FROM recruiter INNER JOIN jobs ON recruiter.cid = jobs.joid";
+          $sel = "SELECT recruiter.cname, recruiter.email, jobs.* 
+          FROM recruiter 
+          INNER JOIN jobs ON recruiter.cid = jobs.rid";  
           $rs = $con->query($sel);
           while($row= $rs->fetch_assoc()){
-          ?>
+          ?> 
+          <button onclick="alert('hello')" class="text-start">
             <div class="grid grid-cols-1 gap-5 shadow-xl mt-5">
                 <div class="h-full ring-1 ring-gray-400 p-6 rounded-xl flex flex-col gap-3 items-start">
-                    <div>
-                        <h3 class="text-2xl text-blue-800 font-bold"><?php echo $row['role']; ?></h3>
-                        <p>Accenture</p>
-                        <p>Kolkata, West Bengal</p>
+                    <div class="flex flex-col items-start">
+                        <h3 class="text-2xl text-blue-800 font-bold"><?php echo $row['role']; ?>, <?php echo $row['exp']; ?></h3>
+                        <p><?php echo $row['cname']; ?></p>
+                        <p><?php echo $row['city']; ?>, <?php echo $row['state']; ?></p>
                     </div>
-                    <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Full Time</span>
+                    <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"><?php echo $row['type']; ?></span>
 
                     <div class="mini-description text-sm flex">
-                      <p>Project Role : Software Development Engineer Project Role Description : Analyze, design, code and test multiple components of application code across one or more clients. Perform maintenance, enhancements and/or development work. Must have Skills : SAP UI5 Development Good to Have Skills : Job Requirements : Key Responsibilities : Summary:As an Application Developer, you will design, build, and configure applications to meet business process and application requirements. </p>
+                      <p>Project Role : <?php if(strlen($row['about']) > 300){
+                        $str = substr($row['about'], 0, 300);
+                        echo $str. "...";
+                      } else {
+                        echo $row['about'];
+                      } ?></p>
                     </div>
+                    <div><p class="text-gray-700 text-sm">Salary: <?php if($row['min_salary'] == 0 && $row['max_salary'] == 0){
+                      echo "Not disclosed";
+                    } else {
+                      echo "₹ ".$row['min_salary']. "- ₹ ". $row['max_salary'];
+                    } ?></p></div>
+                    
+
                     <div><p class="text-gray-400 text-sm">Posted 4 days ago</p></div>
                 </div>
             </div>
+          </button>
+            
 
             <?php } ?>
           </div>
