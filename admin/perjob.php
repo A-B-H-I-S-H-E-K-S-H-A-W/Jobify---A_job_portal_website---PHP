@@ -55,29 +55,29 @@ if(!isset($_SESSION['email'])){
           <div  class="text-start">
             <div class="grid grid-cols-1 gap-5 shadow-xl mt-5">
               <div class="h-full ring-1 ring-gray-400 p-6 rounded-xl flex flex-col gap-3">
-              <a href="perjob.php?rid=<?php echo $row['rid'] ?>">
                 <div class="flex flex-col items-start">
                 
                   <div class="flex justify-between w-full">
-                    <h3 class="text-2xl text-blue-800 font-bold"><?php echo $row['role']; ?>, <?php echo $row['exp']; ?></h3>
-                    <p>Show Details</p>
+                    <h3 class="text-2xl text-blue-800 font-bold"><?php echo $row['role']; ?></h3>
+                    <a
+                      href="edit.php?jid=<?php echo $row['jid']; ?>"
+                      class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear"
+                    >
+                      Edit Details
+                    </a>
                   </div>
                   <p><?php echo $row['cname']; ?></p>
                   <p><?php echo $row['city']; ?>, <?php echo $row['state']; ?></p>
                   
                 </div>
-                </a>
                 <div class="flex items-start">
                   <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"><?php echo $row['type']; ?></span>
                 </div>
+                <div><p class="font-semibold text-blue-900">Job field : <span></span><?php echo $row['jcat'] ?></p></div>
                 <div class="mini-description text-sm flex">
-                  <p>Project Role : 
+                  <p><span class="font-semibold">Project Role : </span>
                     <?php
-                    if (strlen($row['about']) > 300) {
-                      echo substr($row['about'], 0, 300) . "...";
-                    } else {
-                      echo $row['about'];
-                    }
+                    echo $row['about'];
                     ?>
                   </p>
                 </div>
@@ -89,6 +89,10 @@ if(!isset($_SESSION['email'])){
                     echo "₹ " . $row['min_salary'] . " - ₹ " . $row['max_salary'];
                   }
                   ?>
+
+                  <p class="mt-3"><span class="font-semibold">Exprience Needed : </span><?php echo $row['exp']; ?></p>
+
+                  <p class="mt-4"><span class="font-semibold">Contact : </span><?php echo $row['email']; ?></p>
                 </p></div>
                 <div><p class="text-gray-400 text-sm">Posted 4 days ago</p></div>
               </div>
