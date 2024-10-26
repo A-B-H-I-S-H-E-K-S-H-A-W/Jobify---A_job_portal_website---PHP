@@ -55,7 +55,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="flex flex-col items-start">
                 
                   <div class="flex justify-between w-full">
-                    <h3 class="text-2xl text-blue-800 font-bold"><?php echo $row['role']; ?>, <?php echo $row['exp']; ?></h3>
+                    <h3 class="text-2xl text-blue-800 font-bold"><?php echo $row['role']; ?>, Exprience : <?php echo $row['exp']; ?></h3>
                     <p class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Show Details</p>
                   </div>
                   <p><?php echo $row['cname']; ?></p>

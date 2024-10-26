@@ -59,12 +59,15 @@ if(!isset($_SESSION['email'])){
                 
                   <div class="flex justify-between w-full">
                     <h3 class="text-2xl text-blue-800 font-bold"><?php echo $row['role']; ?></h3>
+                    <div class="flex gap-3">
                     <a
                       href="edit.php?jid=<?php echo $row['jid']; ?>"
                       class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear"
                     >
                       Edit Details
                     </a>
+                    <a href="operations/jobs/del.php?jid=<?php echo $row['jid']; ?>" onclick="return confirm('Are you sure to delete this record ?')" class="px-4 py-2 rounded-lg bg-red-900 text-white font-semibold hover:ring-1 hover:ring-red-900 hover:bg-white hover:text-red-900 duration-200 ease-linear" >Delete</a>
+                    </div>
                   </div>
                   <p><?php echo $row['cname']; ?></p>
                   <p><?php echo $row['city']; ?>, <?php echo $row['state']; ?></p>

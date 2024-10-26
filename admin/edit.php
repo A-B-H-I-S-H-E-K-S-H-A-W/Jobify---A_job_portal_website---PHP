@@ -62,7 +62,7 @@ if(!isset($_SESSION['email'])){
                 <div class="border-b border-gray-900/10 pb-12 mt-10">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Job Information</h2>
 
-                <input type="text" value="<?php echo $row['jid']; ?>" hidden>
+                <input type="text" name="jid" value="<?php echo $row['jid']; ?>" hidden>
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-full">
