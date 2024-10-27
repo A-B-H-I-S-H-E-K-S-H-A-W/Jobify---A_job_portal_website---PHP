@@ -1,5 +1,11 @@
-<?php 
+<?php
+session_start();
 include("admin/db/db.php");
+if(isset($_SESSION['email'])){
+  $data = "SELECT * FROM user";
+  $rs=$con->query($data);
+  $row=$rs->fetch_assoc();
+}
 ?>
 
 <!DOCTYPE html>
