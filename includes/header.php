@@ -26,12 +26,19 @@
           </a>
         </div>
         <?php }else{ ?>
-          <h2><?php echo $row['email']; ?></h2>
-          <?php if(!isset($row['profile'])){ ?>
-            <img src="uploads/<?php echo $row['profile']; ?>" alt="Profile">
-          <?php } else { ?>
-            <img class="w-10 rounded-full ring-1" src="uploads/user.jpg" alt="Profile">
-          <?php } ?>
+          <a href="settings.php" class="flex items-center gap-5">
+            <h2><?php echo $row['email']; ?></h2>
+            <?php if(!isset($row['profile'])){ ?>
+              <img src="uploads/<?php echo $row['profile']; ?>" alt="Profile">
+            <?php } else { ?>
+              <img class="w-10 rounded-full ring-1" src="uploads/user.jpg" alt="Profile">
+            <?php } ?>
+          </a>
+          <a href="logout.php"
+            class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-300 ease-linear"
+          >
+            Logout
+          </a>
        <?php } ?>
         </div>
       </div>
