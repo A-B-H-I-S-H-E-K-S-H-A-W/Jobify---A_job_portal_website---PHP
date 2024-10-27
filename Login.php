@@ -1,9 +1,37 @@
+<?php 
+session_start(); // Start the session at the beginning
+include("admin/db/db.php");
+
+if(isset($_POST['save'])){
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
+
+    // Corrected SQL query syntax
+    $sel = "SELECT * FROM user WHERE email='$email' AND pass='$pass'";
+    $result = $con->query($sel); // Execute the query
+
+    if($result->num_rows > 0){
+        // Fetch user data
+        $row = $result->fetch_assoc();
+
+        // Store session data after successful login
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['id'] = $row['uid'];
+        
+        header("location: index.php");
+    } else {
+        $err = "Invalid email or password.";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Login - Jobify</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -22,8 +50,15 @@
     <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Log in to your account</h2>
   </div>
 
+  <?php 
+    if(isset($err)){ ?> 
+    <div class="text-center">
+        <span class="inline-flex items-center rounded-md bg-red-50 px-4 py-2 font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Danger : <?php echo $err; ?></span>
+    </div>
+ <?php } ?>
+
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" action="#" method="POST">
+    <form class="space-y-6" action="" method="POST">
       <div>
         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
         <div class="mt-2">
@@ -44,13 +79,13 @@
       </div>
 
       <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Sign in</button>
+        <button type="submit" name='save' class="flex w-full justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Sign in</button>
       </div>
     </form>
 
     <p class="mt-10 text-center text-sm text-gray-500">
       Don't have an account ?
-      <a href="#" class="font-semibold leading-6 text-blue-600 hover:text-blue-500">Sign up</a>
+      <a href="signup.php" class="font-semibold leading-6 text-blue-600 hover:text-blue-500">Sign up</a>
       
     </p>
 
