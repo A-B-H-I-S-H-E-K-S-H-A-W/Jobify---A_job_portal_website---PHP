@@ -27,6 +27,11 @@ if(isset($_SESSION['email'])){
   <body>
     <?php include("includes/header.php"); ?>
     <div class="max-w-[1220px] mx-auto px-5 my-20">
+    <?php 
+    $sel = "SELECT * FROM user";
+    $rs=$con->query($sel);
+    $row=$rs->fetch_assoc();
+    ?>
     <form>
   <div class="space-y-12">
     <div class="border-b border-gray-900/10 pb-12">
@@ -38,7 +43,7 @@ if(isset($_SESSION['email'])){
         <div class="col-span-full">
           <label for="about" class="block text-sm font-medium leading-6 text-gray-900">About</label>
           <div class="mt-2">
-            <textarea id="about" name="about" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"></textarea>
+            <textarea id="about" name="about" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"><?php echo $row['about'] ?></textarea>
           </div>
           <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
         </div>
@@ -46,10 +51,14 @@ if(isset($_SESSION['email'])){
         <div class="col-span-full">
           <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Photo</label>
           <div class="mt-2 flex items-center gap-x-3">
-            <svg class="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">
-              <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
-            </svg>
-            <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
+            <?php if(isset($row['profile'])){ ?>
+              <svg class="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
+              </svg>
+              <?php } else { ?>
+                <img class="rounded-full w-10 ring-1" src="uploads/<?php echo $row['profile']; ?>" alt="profile img">
+              <?php } ?>
+            <input type="file" name="profile">
           </div>
         </div>
 
@@ -65,10 +74,15 @@ if(isset($_SESSION['email'])){
                   <span>Upload a file</span>
                   <input id="file-upload" name="file" type="file">
                 </label>
-                
               </div>
               <p class="pl-1">or drag and drop</p>
               <p class="text-xs leading-5 text-gray-600">PDF up to 10MB</p>
+              <h2><?php if(!isset($row['cv'])){ ?>
+                  <h2 class="text-lg font-semibold">CV uploaded <?php echo $row['cv']; ?></h2>
+                <?php } else { ?>
+                  <p></p>
+                <?php } ?>
+              </h2>
             </div>
           </div>
         </div>
@@ -101,16 +115,6 @@ if(isset($_SESSION['email'])){
           </div>
         </div>
 
-        <div class="sm:col-span-3">
-          <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Country</label>
-          <div class="mt-2">
-            <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6">
-              <option>United States</option>
-              <option>Canada</option>
-              <option>Mexico</option>
-            </select>
-          </div>
-        </div>
 
         <div class="col-span-full">
           <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Street address</label>
