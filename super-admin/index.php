@@ -1,5 +1,5 @@
 <?php 
-session_start(); // Start the session at the beginning
+session_start(); 
 include("db/db.php");
 
 if(isset($_POST['save'])){
@@ -7,21 +7,19 @@ if(isset($_POST['save'])){
     $user = $_POST['user'];
     $pass = $_POST['password'];
 
-    // Initialize or retrieve the attempt counter
+
     if (!isset($_SESSION['attempts'])) {
         $_SESSION['attempts'] = 3;
     }
 
     if ($_SESSION['attempts'] > 0) {
-        // Corrected SQL query syntax with 'AND'
+
         $sel = "SELECT * FROM admin WHERE email='$email' AND password='$pass' AND name='$user'";
         $result = $con->query($sel);
 
         if($result->num_rows > 0){
-            // Fetch user data
             $row = $result->fetch_assoc();
 
-            // Store session data after successful login
             $_SESSION['email'] = $row['email'];
             $_SESSION['name'] = $row['name'];
             $_SESSION['id'] = $row['aid'];
