@@ -34,7 +34,7 @@ if(!isset($_SESSION['email'])){
 
         <!-- Other content can go here -->
         <div class="p-10">
-          <h2 class="text-3xl text-gray-500">Dashboard</h2>
+          <h2 class="text-3xl text-gray-500">Welcome to jobify</h2>
         </div>
       </div>
     </div>

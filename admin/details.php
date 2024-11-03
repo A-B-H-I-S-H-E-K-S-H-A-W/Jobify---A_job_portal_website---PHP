@@ -3,13 +3,7 @@ include("db/db.php");
 session_start();
 if(!isset($_SESSION['email'])){
     header("location: login.php");
-  }else{
-      $sql="SELECT * FROM recruiter";
-      $rs= $con->query($sql);
-      $row=$rs->fetch_assoc();
-    
-      $_SESSION['id']=$row['cid'];
-    }
+}
 
 if(isset($_POST['submit'])){
     $pass = $_POST['pass'];
@@ -56,7 +50,7 @@ if(isset($_POST['submit'])){
           <h2 class="text-3xl text-gray-500">Enter your company details</h2>
 
             <?php
-            $id = $_SESSION['id'];
+            $id = $_SESSION['cid'];
             $sql = "SELECT * FROM recruiter WHERE cid='$id'";
             $rs=$con->query($sql);
             $row=$rs->fetch_assoc();
@@ -65,7 +59,6 @@ if(isset($_POST['submit'])){
 
             <form action="operations/companyDetails/ins.php" method="post">
             <div class="space-y-12">
-                
 
                 <div class="border-b border-gray-900/10 pb-12 mt-10">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Company Information</h2>

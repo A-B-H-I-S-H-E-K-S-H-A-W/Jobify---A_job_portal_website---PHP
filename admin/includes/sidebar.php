@@ -10,12 +10,6 @@
               <h2 class="text-lg font-semibold">Dashboard</h2>
             </li>
           </a>
-          <a href="details.php" class="p-2 active:text-white">
-            <li class="flex items-center gap-3 hover:text-white duration-300">
-              <i class="fa-solid fa-address-card"></i>
-              <h2 class="text-lg font-semibold">Company Details</h2>
-            </li>
-          </a>
           
           <a href="addjob.php" class="p-2 active:text-white">
             <li class="flex items-center gap-3 hover:text-white duration-300">
@@ -33,6 +27,12 @@
             <li class="flex items-center gap-3 hover:text-white duration-300 ">
               <i class="fa-solid fa-list"></i>
               <h2 class="text-lg font-semibold">All Listed Jobs</h2>
+            </li>
+          </a>
+          <a href="settings.php" class="p-2 active:text-white">
+            <li class="flex items-center gap-3 hover:text-white duration-300 ">
+              <i class="fa-solid fa-gear"></i>
+              <h2 class="text-lg font-semibold">Settings</h2>
             </li>
           </a>
         </ul>

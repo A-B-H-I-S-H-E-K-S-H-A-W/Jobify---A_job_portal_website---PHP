@@ -40,9 +40,10 @@ if (!isset($_SESSION['email'])) {
 
           <?php
           // Fetch job listings
+          $id = $_SESSION['cid'];
           $sel = "SELECT recruiter.cname, recruiter.email, jobs.* 
                   FROM recruiter 
-                  INNER JOIN jobs ON recruiter.cid = jobs.rid";  
+                  INNER JOIN jobs ON recruiter.cid = jobs.rid WHERE cid='$id' ";  
           $rs = $con->query($sel);
           while ($row = $rs->fetch_assoc()) {
           ?>
