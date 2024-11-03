@@ -1,5 +1,9 @@
 <?php
+session_start();
 include("db/db.php");
+if(!isset($_SESSION['name'])){
+  header("location: index.php");
+}
 ?>
 
 <!DOCTYPE html>

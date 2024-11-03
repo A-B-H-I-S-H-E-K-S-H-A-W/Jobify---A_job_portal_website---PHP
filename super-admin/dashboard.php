@@ -1,3 +1,11 @@
+<?php
+session_start();
+include("db/db.php");
+if(!isset($_SESSION['name'])){
+  header("location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,6 +35,26 @@
         <!-- Other content can go here -->
         <div class="p-10">
           <h2 class="text-3xl text-gray-500">Dashboard</h2>
+          <div class="border py-20 px-10 mt-10 max-w-lg rounded-lg shadow-lg">
+            <div class="flex flex-col">
+              <?php
+                $sel = "SELECT * FROM verify";
+                $rs = $con->query($sel);
+                $count=0;
+                while($row = $rs->fetch_assoc()) { 
+                if($row['verify'] === 'Verification Pending'){
+                 $count+=1; 
+                }
+               } 
+               ?>
+              <div class="text-center">
+                <span class="inline-flex items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">Notification : Remaining Verification <?php echo $count ?></span>
+              </div>
+              <div class="text-center mt-5">
+                <a href="verification.php" class="text-center px-4 py-2 rounded-lg bg-black text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-black duration-300 ease-linear">View Pending Verifications</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,9 @@
 <?php
+session_start();
 include("db/db.php");
+if(!isset($_SESSION['name'])){
+  header("location: index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +56,7 @@ include("db/db.php");
                   </div>
                   </div>
                   <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <a href="details.php?id=<?php echo $row['vid'] ?>" class="px-4 py-1 rounded-lg ring-1 ring-black">
+                  <a href="verifiedDetails.php?id=<?php echo $row['vid'] ?>" class="px-4 py-1 rounded-lg ring-1 ring-black">
                       View Comapny Details
                   </a>
                   </div>

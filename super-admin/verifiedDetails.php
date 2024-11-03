@@ -65,11 +65,6 @@ if(!isset($_SESSION['name'])){
                     <h4 class="font-semibold">Comapny License</h4>
                     <a href="../admin/uploads/<?php echo $row['license'] ?>" class="text-center px-4 py-2 rounded-lg bg-black text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-black duration-300 ease-linear">View License</a>
                 </div>
-                <div></div>
-                <div></div>
-                <div class="border-t py-5 w-full flex justify-end">
-                    <a href="operations/ins.php?id=<?php echo $id; ?>" class="px-4 py-2 rounded-lg bg-black text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-black duration-300 ease-linear">Approve</a>
-                </div>
             </div>
           </div>
         </div>
