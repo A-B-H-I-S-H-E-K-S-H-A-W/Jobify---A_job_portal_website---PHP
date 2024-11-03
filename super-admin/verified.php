@@ -36,7 +36,7 @@ include("db/db.php");
             <ul role="list" class="divide-y divide-gray-100">
 
               <?php 
-              $verify = 'Verification Pending';
+              $verify = 'Verified';
                 $sel= "SELECT * FROM verify WHERE verify='$verify'";
                 $rs=$con->query($sel);
                 while($row= $rs->fetch_assoc()){

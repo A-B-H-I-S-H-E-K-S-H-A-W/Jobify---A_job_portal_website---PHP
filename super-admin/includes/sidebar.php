@@ -7,13 +7,19 @@
           <a href="dashboard.php" class="p-2 active:text-white">
             <li class="mt-10 flex items-center gap-3 hover:text-white duration-300">
               <i class="fa-solid fa-house"></i>
-              <h2 class="text-lg font-semibold">Dashboard</h2>
+              <h2 class=" font-semibold">Dashboard</h2>
             </li>
           </a>
           <a href="verification.php" class="p-2 active:text-white">
             <li class="flex items-center gap-3 hover:text-white duration-300">
               <i class="fa-solid fa-address-card"></i>
-              <h2 class="text-lg font-semibold">Verification</h2>
+              <h2 class=" font-semibold">Verification</h2>
+            </li>
+          </a>
+          <a href="verified.php" class="p-2 active:text-white">
+            <li class="flex items-center gap-3 hover:text-white duration-300">
+              <i class="fa-solid fa-address-card"></i>
+              <h2 class="text-base font-semibold">Verified Company</h2>
             </li>
           </a>
         </ul>
