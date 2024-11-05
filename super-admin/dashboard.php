@@ -35,15 +35,16 @@ if(!isset($_SESSION['name'])){
         <!-- Other content can go here -->
         <div class="p-10">
           <h2 class="text-3xl text-gray-500">Dashboard</h2>
-          <div class="border py-20 px-10 mt-10 max-w-lg rounded-lg shadow-lg">
+          <div class="border py-10 px-10 mt-10 max-w-lg rounded-lg shadow-xl">
+            <h2 class="text-2xl font-semibold mb-5">Notifications : </h2>
             <div class="flex flex-col">
               <?php
                 $sel = "SELECT * FROM verify";
                 $rs = $con->query($sel);
                 $count=0;
-                while($row = $rs->fetch_assoc()) { 
+                while($row = $rs->fetch_assoc()) {
                 if($row['verify'] === 'Verification Pending'){
-                 $count+=1; 
+                 $count+=1;
                 }
                } 
                ?>
