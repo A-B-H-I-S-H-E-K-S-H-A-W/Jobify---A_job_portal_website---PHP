@@ -35,6 +35,7 @@ if(!isset($_SESSION['email'])){
             $row = $rs->fetch_assoc();
     
             $_SESSION['verify'] = $row['verify'];
+            $_SESSION['id'] = $row['vid'];
             
             header("location:verify.php");
         } else {
