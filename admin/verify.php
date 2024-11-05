@@ -13,7 +13,6 @@ if(!isset($_SESSION['email'])){
         $country = $_POST['country'];
         $city = $_POST['city'];
         $state = $_POST['state'];
-        $verify = "Verification Pending";
     
         $buf = $_FILES['docs']['tmp_name'];
         $type = $_FILES['docs']['type'];
@@ -26,16 +25,9 @@ if(!isset($_SESSION['email'])){
         move_uploaded_file($buf2, "../../uploads/" . $pdf2);
     
         if ($type == "application/pdf" && $type2 == "application/pdf") {
-            $ins = "INSERT INTO verify (rname, email, pan, gst, country, city, state, docs, license, verify, website) VALUES ('$rname', '$email', '$pan', '$gst', '$country', '$city', '$state', '$pdf', '$pdf2', '$verify', '$link')";
+            $ins = "INSERT INTO verify (rname, email, pan, gst, country, city, state, docs, license, website) VALUES ('$rname', '$email', '$pan', '$gst', '$country', '$city', '$state', '$pdf', '$pdf2', '$link')";
             $con->query($ins);
-            
-    
-            $sel = "SELECT * FROM verify WHERE rname='$rname'";
-            $rs=$con->query($sel);
-            $row = $rs->fetch_assoc();
-    
-            $_SESSION['verify'] = $row['verify'];
-            $_SESSION['id'] = $row['vid'];
+            $_SESSION['verify'] = 'Verification Pending';
             
             header("location:verify.php");
         } else {
@@ -72,7 +64,15 @@ if(!isset($_SESSION['email'])){
         <?php include("includes/topbar.php"); ?>
 
         <!-- Other content can go here -->
-         <?php if(!isset($_SESSION['verify'])){ ?>
+
+        <?php 
+            $sel = "SELECT * FROM recruiter";
+            $rs=$con->query($sel);
+            $row=$rs->fetch_assoc();
+        ?>
+
+
+         <?php if(isset($_SESSION['verify']) == 'Not Verified'){ ?>
         <div class="p-10">
           <h2 class="text-3xl text-gray-500">Enter your company details</h2>
 
@@ -88,7 +88,7 @@ if(!isset($_SESSION['email'])){
                     </div>
                     <div>
                         <div class="text-center">
-                            <span class="inline-flex items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">Status : <?php if(isset($_SESSION['verify']) == 'Verification Pending'){ echo $_SESSION['verify']; } else if(isset($_SESSION['verify']) == 'Verified' ) { echo $_SESSION['verify']; } else { echo 'Not Verified'; } ?></span>
+                            <span class="inline-flex items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">Status : <?php if(isset($_SESSION['verify']) == 'Verification Pending'){ echo $_SESSION['verify']; } else if(isset($_SESSION['verify']) == 'Verified' ) { echo $_SESSION['verify']; } else { echo $_SESSION['verify']; } ?></span>
                         </div>
                     </div>
                </div>
@@ -178,6 +178,8 @@ if(!isset($_SESSION['email'])){
 
             <!-- Model Box -->
         </div>
+
+        
         <?php } else if(isset($_SESSION['verify']) == 'Verification Pending') { ?>
                 <div class="flex justify-center items-center h-full">
                     <div class="text-center flex flex-col items-center gap-5">

@@ -47,6 +47,14 @@ if(!isset($_SESSION['email'])){
                         </div>
                     </li>
                 </a>
+                <?php 
+                  $id = isset($_SESSION['id']);
+                  $sel = "SELECT * FROM verify WHERE vid='$id'";
+                  $rs=$con->query($sel);
+                  $row=$rs->fetch_assoc();
+                ?>
+
+                <?php if(isset($row['verify']) == 'Verified'){ ?>
                 <a href="details.php">
                     <li class="flex justify-between gap-x-6 py-5 p-5 ring-1 mt-5 rounded-lg hover:scale-105 hover:bg-blue-200 duration-200">
                         <div class="flex min-w-0 gap-x-4">
@@ -57,6 +65,8 @@ if(!isset($_SESSION['email'])){
                         </div>
                     </li>
                 </a>
+                <?php } ?>
+
                 <a href="logout.php">
                     <li class="flex justify-between gap-x-6 py-5 p-5 ring-1 mt-5 rounded-lg hover:scale-105 hover:bg-blue-200 duration-200">
                         <div class="flex min-w-0 gap-x-4">

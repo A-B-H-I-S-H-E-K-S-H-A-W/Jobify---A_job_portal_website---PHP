@@ -35,6 +35,30 @@ if(!isset($_SESSION['email'])){
         <!-- Other content can go here -->
         <div class="p-10">
           <h2 class="text-3xl text-gray-500">Welcome to jobify</h2>
+          <?php if($_SESSION['verify'] == 'Not Verified'){ ?>
+            <div class="p-10 border shadow-xl max-w-xl mt-10 rounded-xl">
+              <div class="flex flex-col items-start">
+                <h3 class="text-2xl font-semibold">Verify Yourself First...</h3>
+                <a href="verify.php" class="mt-5 px-4 py-2 rounded-lg bg-blue-800 text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-blue-700 duration-300 ease-linear">Verify</a>
+              </div>
+            </div>
+          <?php } else if($_SESSION['verify'] == 'Verified') { ?>
+
+            <div class="p-10 border shadow-xl max-w-xl mt-10 rounded-xl">
+              <div class="flex flex-col items-start">
+                <h3 class="text-2xl font-semibold">You are Verified</h3>
+                <p>Now enter your company details to continue listing jobs.</p>
+                <a href="details.php" class="mt-5 px-4 py-2 rounded-lg bg-blue-800 text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-blue-700 duration-300 ease-linear">Redirect to Company Details Form</a>
+              </div>
+            </div>
+            
+          <?php } else { ?>
+            <div class="p-10 border shadow-xl max-w-xl mt-10 rounded-xl">
+              <div class="flex flex-col items-start">
+                <h3 class="text-2xl font-semibold">Your Verification for the Company is Pending...</h3>
+              </div>
+            </div>
+          <?php } ?>
         </div>
       </div>
     </div>

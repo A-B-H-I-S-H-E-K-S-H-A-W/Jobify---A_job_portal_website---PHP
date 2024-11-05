@@ -5,9 +5,10 @@ if(isset($_POST['save'])){
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $cpass = $_POST['cpassword'];
+    $confirm = 'Not Verified';
 
     if($pass === $cpass && strlen($pan) === 8){
-        $ins = "INSERT INTO recruiter SET pan='$pan', email='$email', password='$pass', cpassword='$cpass' ";
+        $ins = "INSERT INTO recruiter SET pan='$pan', email='$email', password='$pass', cpassword='$cpass', verify='$confirm'";
         $con->query($ins);
         header("location: login.php");
     }else{

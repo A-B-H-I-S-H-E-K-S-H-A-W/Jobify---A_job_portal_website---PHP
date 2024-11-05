@@ -16,8 +16,7 @@ if(isset($_POST['save'])){
 
         // Store session data after successful login
         $_SESSION['email'] = $row['email'];
-        
-        $_SESSION['pan'] = $row['pan'];
+        $_SESSION['verify'] = $row['verify'];
         $_SESSION['cid'] = $row['cid'];
         
         header("location: dashboard.php");
