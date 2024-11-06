@@ -67,8 +67,9 @@ if(!isset($_SESSION['name'])){
                 </div>
                 <div></div>
                 <div></div>
-                <div class="border-t py-5 w-full flex justify-end">
+                <div class="border-t py-5 w-full flex justify-end gap-5">
                     <a href="operations/ins.php?id=<?php echo $row['cid']; ?>" class="px-4 py-2 rounded-lg bg-black text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-black duration-300 ease-linear">Approve</a>
+                    <a href="operations/deny.php?id=<?php echo $row['cid']; ?>" class="px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:ring-1 hover:ring-red-600 hover:bg-white hover:text-red-600 duration-300 ease-linear">Deny</a>
                 </div>
             </div>
           </div>
