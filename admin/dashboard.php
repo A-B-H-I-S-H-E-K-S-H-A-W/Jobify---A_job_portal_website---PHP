@@ -35,14 +35,14 @@ if(!isset($_SESSION['email'])){
         <!-- Other content can go here -->
         <div class="p-10">
           <h2 class="text-3xl text-gray-500">Welcome to jobify</h2>
-          <?php if($_SESSION['verify'] == 'Not Verified'){ ?>
+          <?php if($row['verify'] == 'Not Verified'){ ?>
             <div class="p-10 border shadow-xl max-w-xl mt-10 rounded-xl">
               <div class="flex flex-col items-start">
                 <h3 class="text-2xl font-semibold">Verify Yourself First...</h3>
                 <a href="verify.php" class="mt-5 px-4 py-2 rounded-lg bg-blue-800 text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-blue-700 duration-300 ease-linear">Verify</a>
               </div>
             </div>
-          <?php } else if($_SESSION['verify'] == 'Verified') { ?>
+          <?php } else if($row['verify'] == 'Verified') { ?>
 
             <div class="p-10 border shadow-xl max-w-xl mt-10 rounded-xl">
               <div class="flex flex-col items-start">

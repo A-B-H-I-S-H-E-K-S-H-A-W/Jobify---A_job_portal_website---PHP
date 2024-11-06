@@ -37,6 +37,15 @@ if(!isset($_SESSION['email'])){
           <h2 class="text-3xl text-gray-500">Settings</h2>
           <div class="mt-10">
             <ul role="list" class="divide-y divide-gray-100">
+
+                <?php 
+                  $id = $_SESSION['cid'];
+                  $sel = "SELECT * FROM recruiter WHERE cid='$id'";
+                  $rs=$con->query($sel);
+                  $row=$rs->fetch_assoc();
+                ?>
+
+                <?php if($row['verify'] == 'Verification Pending' || $row['verify'] == 'Not Verified'){ ?>
                 <a href="verify.php">
                     <li class="flex justify-between gap-x-6 py-5 p-5 ring-1 rounded-lg hover:scale-105 hover:bg-blue-200 duration-200">
                         <div class="flex min-w-0 gap-x-4">
@@ -47,14 +56,9 @@ if(!isset($_SESSION['email'])){
                         </div>
                     </li>
                 </a>
-                <?php 
-                  $id = isset($_SESSION['id']);
-                  $sel = "SELECT * FROM verify WHERE vid='$id'";
-                  $rs=$con->query($sel);
-                  $row=$rs->fetch_assoc();
-                ?>
+                
 
-                <?php if(isset($row['verify']) == 'Verified'){ ?>
+                <?php } else if($row['verify'] == 'Verified'){ ?>
                 <a href="details.php">
                     <li class="flex justify-between gap-x-6 py-5 p-5 ring-1 mt-5 rounded-lg hover:scale-105 hover:bg-blue-200 duration-200">
                         <div class="flex min-w-0 gap-x-4">

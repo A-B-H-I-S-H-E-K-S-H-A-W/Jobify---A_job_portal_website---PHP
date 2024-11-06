@@ -40,13 +40,13 @@ if(!isset($_SESSION['name'])){
             <div class=" h-full ring-1 ring-gray-400 p-6 rounded-xl grid grid-cols-3 gap-3">
                 <?php 
                 $id=$_GET['id'];
-                $sel="SELECT * FROM verify WHERE vid='$id'";
+                $sel="SELECT * FROM recruiter WHERE cid='$id'";
                 $rs=$con->query($sel);
                 $row=$rs->fetch_assoc();
                 ?>
 
                 <div>
-                    <h2 class="text-2xl font-semibold mb-10">Company Name : <?php echo $row['rname'] ?></h2>
+                    <h2 class="text-2xl font-semibold mb-10">Company Name : <?php echo $row['cname'] ?></h2>
                     <div class="flex flex-col gap-3">
                         <p class="font-semibold">Email : <?php echo $row['email'] ?></p>
                         <p class="font-semibold">Website : <?php echo $row['website'] ?></p>
@@ -68,7 +68,7 @@ if(!isset($_SESSION['name'])){
                 <div></div>
                 <div></div>
                 <div class="border-t py-5 w-full flex justify-end">
-                    <a href="operations/ins.php?id=<?php echo $id; ?>" class="px-4 py-2 rounded-lg bg-black text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-black duration-300 ease-linear">Approve</a>
+                    <a href="operations/ins.php?id=<?php echo $row['cid']; ?>" class="px-4 py-2 rounded-lg bg-black text-white font-semibold hover:ring-1 hover:ring-black-900 hover:bg-white hover:text-black duration-300 ease-linear">Approve</a>
                 </div>
             </div>
           </div>

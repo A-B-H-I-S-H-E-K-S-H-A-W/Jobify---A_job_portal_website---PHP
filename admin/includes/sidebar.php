@@ -10,7 +10,14 @@
               <h2 class="text-lg font-semibold">Dashboard</h2>
             </li>
           </a>
-          <?php if($_SESSION['verify'] == 'Verified'){ ?>
+
+          <?php 
+            $id= $_SESSION['cid'];
+            $sel = "SELECT * FROM recruiter WHERE cid='$id'";
+            $rs=$con->query($sel);
+            $row=$rs->fetch_assoc();
+          ?>
+          <?php if($row['verify'] == 'Verified'){ ?>
           <a href="addjob.php" class="p-2 active:text-white">
             <li class="flex items-center gap-3 hover:text-white duration-300">
               <i class="fa-solid fa-address-card"></i>

@@ -5,7 +5,8 @@ if(!isset($_SESSION['email'])){
     header("location: login.php");
 }else {
     if (isset($_POST['save'])) {
-        $rname = $_POST['rname'];
+        $id = $_SESSION['cid'];
+        $cname = $_POST['cname'];
         $email = $_POST['email'];
         $pan = $_POST['pan'];
         $gst = $_POST['gst'];
@@ -13,22 +14,27 @@ if(!isset($_SESSION['email'])){
         $country = $_POST['country'];
         $city = $_POST['city'];
         $state = $_POST['state'];
+        $verify = "Verification Pending";
     
         $buf = $_FILES['docs']['tmp_name'];
         $type = $_FILES['docs']['type'];
         $pdf = time() . $_FILES['docs']['name'];
-        move_uploaded_file($buf, "../../uploads/" . $pdf);
+        move_uploaded_file($buf, "uploads/" . $pdf);
     
         $buf2 = $_FILES['license']['tmp_name'];
         $type2 = $_FILES['license']['type'];
         $pdf2 = time() . $_FILES['license']['name'];
-        move_uploaded_file($buf2, "../../uploads/" . $pdf2);
+        move_uploaded_file($buf2, "uploads/" . $pdf2);
     
         if ($type == "application/pdf" && $type2 == "application/pdf") {
-            $ins = "INSERT INTO verify (rname, email, pan, gst, country, city, state, docs, license, website) VALUES ('$rname', '$email', '$pan', '$gst', '$country', '$city', '$state', '$pdf', '$pdf2', '$link')";
-            $con->query($ins);
-            $_SESSION['verify'] = 'Verification Pending';
-            
+            $upd = "UPDATE recruiter SET cname='$cname', email='$email', pan='$pan', gst='$gst', country='$country', city='$city', state='$state', docs='$pdf', license='$pdf2', website='$link', verify='$verify' WHERE cid='$id' ";
+            $con->query($upd);
+
+            $sel = "SELECT * FROM recruiter";
+            $rs = $con->query($sel);
+            $row = $rs->fetch_assoc();
+            $_SESSION['verify'] = $row['verify'];
+
             header("location:verify.php");
         } else {
             echo "Error 404";
@@ -64,15 +70,7 @@ if(!isset($_SESSION['email'])){
         <?php include("includes/topbar.php"); ?>
 
         <!-- Other content can go here -->
-
-        <?php 
-            $sel = "SELECT * FROM recruiter";
-            $rs=$con->query($sel);
-            $row=$rs->fetch_assoc();
-        ?>
-
-
-         <?php if(isset($_SESSION['verify']) == 'Not Verified'){ ?>
+         <?php if($_SESSION['verify'] == 'Not Verified'){ ?>
         <div class="p-10">
           <h2 class="text-3xl text-gray-500">Enter your company details</h2>
 
@@ -97,7 +95,7 @@ if(!isset($_SESSION['email'])){
                     <div class="sm:col-span-3">
                     <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Comapny name</label>
                     <div class="mt-2">
-                        <input type="text" name="rname" id="cyname" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                        <input type="text" name="cname" id="cyname" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
                     </div>
                     </div>
 
@@ -180,7 +178,7 @@ if(!isset($_SESSION['email'])){
         </div>
 
         
-        <?php } else if(isset($_SESSION['verify']) == 'Verification Pending') { ?>
+        <?php } else if($_SESSION['verify'] == 'Verification Pending') { ?>
                 <div class="flex justify-center items-center h-full">
                     <div class="text-center flex flex-col items-center gap-5">
                         <h2 class="text-3xl text-gray-500">Verification Submitted</h2>

@@ -40,15 +40,15 @@ if(!isset($_SESSION['name'])){
             <ul role="list" class="divide-y divide-gray-100">
 
               <?php 
-              $verify = 'Verification Pending';
-                $sel= "SELECT * FROM verify WHERE verify='$verify'";
+                $verify = 'Verification pending';
+                $sel= "SELECT * FROM recruiter WHERE verify='$verify'";
                 $rs=$con->query($sel);
                 while($row= $rs->fetch_assoc()){
               ?>
               <li class="flex justify-between gap-x-6 p-5 hover:bg-gray-200 rounded-xl cursor-pointer border mb-5 shadow-lg">
                   <div class="flex min-w-0 gap-x-4 ">
                   <div class="min-w-0 flex-auto">
-                      <p class="text-xl font-semibold leading-6 text-gray-900"><Span class="font-bold">Company : </Span><?php echo $row['rname']; ?></p>
+                      <p class="text-xl font-semibold leading-6 text-gray-900"><Span class="font-bold">Company : </Span><?php echo $row['cname']; ?></p>
                       <p class="mt-1 truncate text-sm leading-5 text-gray-500"><span>Email : </span><?php echo $row['email'] ?></p>
                       <p class="mt-1 truncate text-sm leading-5 text-gray-500"><span>Pan No. : </span><?php echo $row['pan'] ?></p>
                       <p class="mt-1 truncate text-sm leading-5 text-gray-500"><span>GST No. : </span><?php echo $row['gst'] ?></p>
@@ -56,7 +56,7 @@ if(!isset($_SESSION['name'])){
                   </div>
                   </div>
                   <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <a href="details.php?id=<?php echo $row['vid'] ?>" class="px-4 py-1 rounded-lg ring-1 ring-black">
+                  <a href="details.php?id=<?php echo $row['cid'] ?>" class="px-4 py-1 rounded-lg ring-1 ring-black">
                       View Comapny Details
                   </a>
                   </div>

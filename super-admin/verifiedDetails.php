@@ -40,13 +40,13 @@ if(!isset($_SESSION['name'])){
             <div class=" h-full ring-1 ring-gray-400 p-6 rounded-xl grid grid-cols-3 gap-3">
                 <?php 
                 $id=$_GET['id'];
-                $sel="SELECT * FROM verify WHERE vid='$id'";
+                $sel="SELECT * FROM recruiter WHERE cid='$id'";
                 $rs=$con->query($sel);
                 $row=$rs->fetch_assoc();
                 ?>
 
                 <div>
-                    <h2 class="text-2xl font-semibold mb-10">Company Name : <?php echo $row['rname'] ?></h2>
+                    <h2 class="text-2xl font-semibold mb-10">Company Name : <?php echo $row['cname'] ?></h2>
                     <div class="flex flex-col gap-3">
                         <p class="font-semibold">Email : <?php echo $row['email'] ?></p>
                         <p class="font-semibold">Website : <?php echo $row['website'] ?></p>

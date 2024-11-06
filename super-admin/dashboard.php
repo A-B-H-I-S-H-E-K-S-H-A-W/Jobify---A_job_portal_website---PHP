@@ -39,11 +39,11 @@ if(!isset($_SESSION['name'])){
             <h2 class="text-2xl font-semibold mb-5">Notifications : </h2>
             <div class="flex flex-col">
               <?php
-                $sel = "SELECT * FROM verify";
+                $sel = "SELECT * FROM recruiter";
                 $rs = $con->query($sel);
                 $count=0;
                 while($row = $rs->fetch_assoc()) {
-                if($row['verify'] === 'Verification Pending'){
+                if($row['verify'] == 'Verification Pending'){
                  $count+=1;
                 }
                } 
