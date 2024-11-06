@@ -70,7 +70,7 @@ if(!isset($_SESSION['email'])){
         <?php include("includes/topbar.php"); ?>
 
         <!-- Other content can go here -->
-         <?php if($_SESSION['verify'] == 'Not Verified'){ ?>
+         <?php if($row['verify'] == 'Not Verified'){ ?>
         <div class="p-10">
           <h2 class="text-3xl text-gray-500">Enter your company details</h2>
 
@@ -178,11 +178,11 @@ if(!isset($_SESSION['email'])){
         </div>
 
         
-        <?php } else if($_SESSION['verify'] == 'Verification Pending') { ?>
+        <?php } else if($row['verify'] == 'Verification Pending') { ?>
                 <div class="flex justify-center items-center h-full">
                     <div class="text-center flex flex-col items-center gap-5">
                         <h2 class="text-3xl text-gray-500">Verification Submitted</h2>
-                        <span class="inline-flex items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">Status : <?php if(isset($_SESSION['verify']) == 'Verification Pending'){ echo $_SESSION['verify']; } else if(isset($_SESSION['verify']) == 'Verified' ) { echo $_SESSION['verify']; } else { echo 'Not Verified'; } ?></span>
+                        <span class="inline-flex items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">Status : <?php if(isset($row['verify']) == 'Verification Pending'){ echo $row['verify']; } else if(isset($row['verify']) == 'Verified' ) { echo $row['verify']; } else { echo 'Not Verified'; } ?></span>
                         <a href="dashboard.php" class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Redirect to Dashboard</a>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ if(!isset($_SESSION['email'])){
                 <div class="flex justify-center items-center h-full">
                     <div class="text-center flex flex-col items-center gap-5">
                         <h2 class="text-3xl text-gray-500">Already Verified</h2>
-                        <span class="inline-flex items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">Status : <?php if(isset($_SESSION['verify']) == 'Verification Pending'){ echo $_SESSION['verify']; } else if(isset($_SESSION['verify']) == 'Verified' ) { echo $_SESSION['verify']; } else { echo 'Not Verified'; } ?></span>
+                        <span class="inline-flex items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">Status : <?php if(isset($row['verify']) == 'Verification Pending'){ echo $row['verify']; } else if(isset($row['verify']) == 'Verified' ) { echo $row['verify']; } else { echo 'Not Verified'; } ?></span>
                         <a href="dashboard.php" class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Redirect to Dashboard</a>
                     </div>
                 </div>
