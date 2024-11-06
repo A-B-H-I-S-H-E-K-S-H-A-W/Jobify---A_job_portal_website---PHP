@@ -35,18 +35,22 @@ if(!isset($_SESSION['name'])){
         <!-- Other content can go here -->
         <div class="p-10">
           <h2 class="text-3xl text-gray-500">Company Details</h2>
+                <?php 
+                    $deny='Cancelled';
+                    $sel="SELECT * FROM recruiter WHERE verify='$deny'";
+                    $rs=$con->query($sel);
+                    while($row=$rs->fetch_assoc()){
+                ?>
 
           <div class="grid grid-cols-1 gap-5 shadow-xl mt-5">
             <div class=" h-full ring-1 ring-gray-400 p-6 rounded-xl grid grid-cols-3 gap-3">
-                <?php 
-                $id=$_GET['id'];
-                $sel="SELECT * FROM recruiter WHERE cid='$id'";
-                $rs=$con->query($sel);
-                $row=$rs->fetch_assoc();
-                ?>
+                
 
                 <div>
-                    <h2 class="text-2xl font-semibold mb-10">Company Name : <?php echo $row['cname'] ?></h2>
+                    <div class="flex items-center mb-10 gap-3">
+                        <h2 class="text-xl font-semibold ">Company Name : <?php echo $row['cname'] ?></h2>
+                        <span class="inline-flex items-center rounded-md bg-red-50 px-4 py-2 font-medium text-red-700 ring-1 ring-inset ring-red-600/10"><?php echo $row['verify'] ?></span>
+                    </div>
                     <div class="flex flex-col gap-3">
                         <p class="font-semibold">Email : <?php echo $row['email'] ?></p>
                         <p class="font-semibold">Website : <?php echo $row['website'] ?></p>
@@ -68,10 +72,12 @@ if(!isset($_SESSION['name'])){
                 <div></div>
                 <div></div>
                 <div class="border-t py-5 w-full flex justify-end">
-                    <a href="operations/deny.php?id=<?php echo $row['cid']; ?>" class="px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:ring-1 hover:ring-red-600 hover:bg-white hover:text-red-600 duration-300 ease-linear">Deny</a>
+                    <a href="operations/ins.php?id=<?php echo $row['cid']; ?>" class="px-4 py-2 rounded-lg bg-black text-white font-semibold hover:ring-1 hover:ring-black hover:bg-white hover:text-black duration-300 ease-linear">Re-approve</a>
                 </div>
             </div>
           </div>
+
+          <?php } ?>
         </div>
       </div>
     </div>

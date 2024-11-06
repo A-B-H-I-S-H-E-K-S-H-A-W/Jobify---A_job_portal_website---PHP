@@ -22,5 +22,11 @@
               <h2 class="text-base font-semibold">Verified Company</h2>
             </li>
           </a>
+          <a href="denied.php" class="p-2 active:text-white">
+            <li class="flex items-center gap-3 hover:text-white duration-300">
+              <i class="fa-solid fa-address-card"></i>
+              <h2 class="text-base font-semibold">Denied Company</h2>
+            </li>
+          </a>
         </ul>
       </div>
