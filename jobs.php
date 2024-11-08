@@ -2,7 +2,8 @@
 session_start();
 include("admin/db/db.php");
 if(isset($_SESSION['email'])){
-  $data = "SELECT * FROM user";
+  $email = $_SESSION['email'];
+  $data = "SELECT * FROM user WHERE email='$email'";
   $rs=$con->query($data);
   $row=$rs->fetch_assoc();
 }
@@ -46,7 +47,7 @@ if(isset($_SESSION['email'])){
           <div  class="text-start">
             <div class="grid grid-cols-1 gap-5 shadow-xl mt-5">
               <div class="h-full ring-1 ring-gray-400 p-6 rounded-xl flex flex-col gap-3">
-              <a href="perjob.php?jid=<?php echo $row['jid'] ?>">
+              <a href="jobDetails.php?jid=<?php echo $row['jid'] ?>">
                 <div class="flex flex-col items-start">
                 
                   <div class="flex justify-between w-full">

@@ -2,7 +2,8 @@
 session_start();
 include("admin/db/db.php");
 if(isset($_SESSION['email'])){
-  $data = "SELECT * FROM user";
+  $email = $_SESSION['email'];
+  $data = "SELECT * FROM user WHERE email='$email'";
   $rs=$con->query($data);
   $row=$rs->fetch_assoc();
 }
@@ -42,24 +43,80 @@ if(isset($_SESSION['email'])){
           </p>
         </div>
         <div
-          class="flex justify-center mx-auto my-5 px-5 max-w-[580px] ring-1 rounded-3xl shadow-xl"
+          class="flex justify-center mx-auto my-5 px-5 max-w-[600px] ring-1 rounded-3xl shadow-xl"
         >
           <form class="flex gap-3 flex-col md:flex-row items-center">
             <div class="flex gap-3 items-center px-1 my-1 md:my-0">
               <i class="fa-solid fa-building text-base md:text-lg"></i>
-              <input
-                class="py-3 rounded-3xl md:px-3 px-16 bg-gray-50"
-                placeholder="Seacrh for company, skills"
-                type="text"
-              />
-            </div>
-            <div class="flex gap-3 items-center px-1 my-1 md:my-0">
-              <i class="fa-solid fa-location-dot text-base md:text-lg"></i>
-              <input
+              <select
                 class="py-3 rounded-3xl md:px-3 px-16 bg-gray-50"
                 placeholder="Seacrh for Location"
                 type="text"
-              />
+              >
+              <option value="">-- Select Job Role --</option>
+              <option value="Full Stack Developer">Full Stack Developer</option>
+              <option value="Front-End Developer">Front-End Developer</option>
+              <option value="Back-End Developer">Back-End Developer</option>
+              <option value="UI/UX Designer">UI/UX Designer</option>
+              <option value="Cloud Engineer">Cloud Engineer</option>
+              <option value="Application Developer">Application Developer</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="AI Developer">AI Developer</option>
+              <option value="Back-End Engineer">Back-End Engineer</option>
+              <option value="Full-Stack Engineer">Full-Stack Engineer</option>
+              <option value="Database Engineer">Database Engineer</option>
+              <option value="Data Entry">Data Entry</option>
+              <option value="Accountant">Accountant</option>
+              <option value="Computer Operator">Computer Operator</option>
+              <option value="Software Developer">Software Developer</option>
+              <option value="Data Analyist">Data Analyist</option>
+            </select>
+            </div>
+            <div class="flex gap-3 items-center px-1 my-1 md:my-0">
+              <i class="fa-solid fa-location-dot text-base md:text-lg"></i>
+              <select
+                class="py-3 rounded-3xl md:px-3 px-16 bg-gray-50"
+                placeholder="Seacrh for Location"
+                type="text"
+              >
+              <option value="">-- Select Location --</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="West Bengal">West Bengal</option>
+              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra</option>
+              <option value="Lakshadweep">Lakshadweep</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Puducherry">Puducherry</option>
+              <option value="Ladakh">Ladakh</option>
+              <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+            </select>
             </div>
             <button class="hidden md:block">
               <i

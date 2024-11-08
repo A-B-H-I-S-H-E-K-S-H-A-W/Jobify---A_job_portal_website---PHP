@@ -1,7 +1,8 @@
 <?php
+session_start();
 include("../../db/db.php");
 if(isset($_POST['save'])){
-    $cid = $_SESSION['rid'];
+    $cid = $_SESSION['cid'];
     $jobrole=$_POST['jobrole'];
     $jobtype=$_POST['jobtype'];
     $jobcat=$_POST['jobcat'];

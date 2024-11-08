@@ -8,7 +8,7 @@
             <ul class="flex gap-5 text-lg">
               <li><a href="index.php">Home</a></li>
               <li><a href="jobs.php">Jobs</a></li>
-              <li><a href="">Companies</a></li>
+              <li><a href="companies.php">Companies</a></li>
             </ul>
           </div>
         </div>

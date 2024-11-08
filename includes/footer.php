@@ -18,21 +18,21 @@
         <div class="mt-5 text-lg">
           <h2 class="text-2xl mb-5">Links</h2>
           <ul class="flex flex-col gap-5 text-sm">
-            <li>Home</li>
-            <li>Jobs</li>
-            <li>Internships</li>
-            <li>Start-up's</li>
-            <li>Services</li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="jobs.php">Jobs</a></li>
+            <li><a href="internship.php">Internships</a></li>
+            <li><a href="startup.php">Start-up's</a></li>
+            <li><a href="services.php">Services</a></li>
           </ul>
         </div>
         <div class="mt-5 text-lg">
           <h2 class="text-2xl mb-5">Services</h2>
           <ul class="flex flex-col gap-5 text-sm">
-            <li>Help Center</li>
-            <li>Notices</li>
-            <li>Reports</li>
-            <li>Feedback</li>
-            <li>Fraud Alert</li>
+            <li><a href="help.php">Help Center</a></li>
+            <li><a href="help.php">Notices</a></li>
+            <li><a href="help.php">Reports</a></li>
+            <li><a href="help.php">Feedback</a></li>
+            <li><a href="help.php">Fraud Alert</a></li>
           </ul>
         </div>
         <div class="mt-5 text-lg">
