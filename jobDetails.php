@@ -97,7 +97,7 @@ if(isset($_SESSION['email'])){
 
             <!-- Model Box -->
 
-            <div id="modelConfirm" class="fixed hidden top-0 z-50 inset-0 h-full w-full px-4">
+          <div id="modelConfirm" class="fixed hidden top-0 z-50 inset-0 h-full w-full px-4">
                 <div class="relative top-10 mx-auto shadow-2xl rounded-md border bg-white max-w-md">
                     <div class="flex justify-end p-2">
                         <button onclick="closeModal('modelConfirm')" type="button"
@@ -110,13 +110,17 @@ if(isset($_SESSION['email'])){
                         </button>
                     </div>
 
-                    <div class="p-6 pt-0 ">
-                        <h2 class="text-2xl text-center font-bold mb-10 text-blue-900">Alert Message from Jobify</h2>
+                    <div class="p-6 pt-0 flex flex-col">
+                        <h2 class="text-2xl text-center font-bold mb-5 text-blue-900">Alert Message from Jobify</h2>
                         <!-- Content Area -->
-                        <span class="text-start text-lg font-medium text-red-700 p-2 rounded-lg">Warning : Login First to Access</span>
+                        <span class="text-start text-lg font-medium mb-3 text-red-700 p-2 rounded-lg">Warning : Login First to Access</span>
+                        <div class="text-end">
+                          <button onclick="closeModal('modelConfirm')" type="button" class="px-4 py-2 rounded-lg bg-red-700 text-white font-semibold hover:ring-1 hover:ring-red-900 hover:bg-white hover:text-red-900 duration-300 ease-linear">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
+          </div>
 
 
 
