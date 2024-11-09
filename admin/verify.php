@@ -163,7 +163,7 @@ if(!isset($_SESSION['email'])){
                     <label for="state" class="block text-sm font-medium leading-6 text-gray-900">State / Province</label>
                     <div class="mt-2">
                     <select
-                            class="py-3 rounded-3xl md:px-3 px-16 bg-gray-50"
+                            class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                             placeholder="Seacrh for Location"
                             type="text"
                             name="state"
