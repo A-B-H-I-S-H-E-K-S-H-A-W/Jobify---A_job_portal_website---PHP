@@ -171,7 +171,51 @@ if(!isset($_SESSION['email'])){
                     <div class="sm:col-span-2">
                     <label for="region" class="block text-sm font-medium leading-6 text-gray-900">State / Province</label>
                     <div class="mt-2">
-                        <input value="<?php echo $row['state']; ?>" type="text" name="state" id="state" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                    <select
+                            class="py-3 rounded-3xl md:px-3 px-16 bg-gray-50"
+                            placeholder="Seacrh for Location"
+                            type="text"
+                            name="state"
+                            id="state"
+                        >
+                        <option value="">-- Select Location --</option>
+                        <option value="Andhra Pradesh" <?php if($row['state'] == "Andhra Pradesh") echo 'selected' ?>>Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh" <?php if($row['state'] == "Arunachal Pradesh") echo 'selected' ?>>Arunachal Pradesh</option>
+                        <option value="Assam" <?php if($row['state'] == "Assam") echo 'selected' ?>>Assam</option>
+                        <option value="Bihar" <?php if($row['state'] == "Bihar") echo 'selected' ?>>Bihar</option>
+                        <option value="Chhattisgarh" <?php if($row['state'] == "Chhattisgarh") echo 'selected' ?>>Chhattisgarh</option>
+                        <option value="Goa" <?php if($row['state'] == "Goa") echo 'selected' ?>>Goa</option>
+                        <option value="Gujarat" <?php if($row['state'] == "Gujarat") echo 'selected' ?>>Gujarat</option>
+                        <option value="Haryana" <?php if($row['state'] == "Haryana") echo 'selected' ?>>Haryana</option>
+                        <option value="Himachal Pradesh" <?php if($row['state'] == "Himachal Pradesh") echo 'selected' ?>>Himachal Pradesh</option>
+                        <option value="Jharkhand" <?php if($row['state'] == "Jharkhand") echo 'selected' ?>>Jharkhand</option>
+                        <option value="Karnataka" <?php if($row['state'] == "Karnataka") echo 'selected' ?>>Karnataka</option>
+                        <option value="Kerala" <?php if($row['state'] == "Kerala") echo 'selected' ?>>Kerala</option>
+                        <option value="Madhya Pradesh" <?php if($row['state'] == "Madhya Pradesh") echo 'selected' ?>>Madhya Pradesh</option>
+                        <option value="Maharashtra" <?php if($row['state'] == "Maharashtra") echo 'selected' ?>>Maharashtra</option>
+                        <option value="Manipur" <?php if($row['state'] == "Manipur") echo 'selected' ?>>Manipur</option>
+                        <option value="Meghalaya" <?php if($row['state'] == "Meghalaya") echo 'selected' ?>>Meghalaya</option>
+                        <option value="Mizoram" <?php if($row['state'] == "Mizoram") echo 'selected' ?>>Mizoram</option>
+                        <option value="Nagaland" <?php if($row['state'] == "Nagaland") echo 'selected' ?>>Nagaland</option>
+                        <option value="Odisha" <?php if($row['state'] == "Odisha") echo 'selected' ?>>Odisha</option>
+                        <option value="Punjab" <?php if($row['state'] == "Punjab") echo 'selected' ?>>Punjab</option>
+                        <option value="Rajasthan" <?php if($row['state'] == "Rajasthan") echo 'selected' ?>>Rajasthan</option>
+                        <option value="Sikkim" <?php if($row['state'] == "Sikkim") echo 'selected' ?>>Sikkim</option>
+                        <option value="Tamil Nadu" <?php if($row['state'] == "Tamil Nadu") echo 'selected' ?>>Tamil Nadu</option>
+                        <option value="Telangana" <?php if($row['state'] == "Telangana") echo 'selected' ?>>Telangana</option>
+                        <option value="Tripura" <?php if($row['state'] == "Tripura") echo 'selected' ?>>Tripura</option>
+                        <option value="Uttar Pradesh" <?php if($row['state'] == "Uttar Pradesh") echo 'selected' ?>>Uttar Pradesh</option>
+                        <option value="Uttarakhand" <?php if($row['state'] == "Uttarakhand") echo 'selected' ?>>Uttarakhand</option>
+                        <option value="West Bengal" <?php if($row['state'] == "West Bengal") echo 'selected' ?>>West Bengal</option>
+                        <option value="Andaman and Nicobar Islands" <?php if($row['state'] == "Andaman and Nicobar Islands") echo 'selected' ?>>Andaman and Nicobar Islands</option>
+                        <option value="Chandigarh" <?php if($row['state'] == "Chandigarh") echo 'selected' ?>>Chandigarh</option>
+                        <option value="Dadra and Nagar Haveli and Daman and Diu" <?php if($row['state'] == "Dadra and Nagar Haveli and Daman and Diu") echo 'selected' ?>>Dadra</option>
+                        <option value="Lakshadweep" <?php if($row['state'] == "Lakshadweep") echo 'selected' ?>>Lakshadweep</option>
+                        <option value="Delhi" <?php if($row['state'] == "Delhi") echo 'selected' ?>>Delhi</option>
+                        <option value="Puducherry" <?php if($row['state'] == "Puducherry") echo 'selected' ?>>Puducherry</option>
+                        <option value="Ladakh" <?php if($row['state'] == "Ladakh") echo 'selected' ?>>Ladakh</option>
+                        <option value="Jammu and Kashmir" <?php if($row['state'] == "Jammu and Kashmir") echo 'selected' ?>>Jammu and Kashmir</option>
+                    </select>
                     </div>
                     </div>
 
