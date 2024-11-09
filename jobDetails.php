@@ -1,9 +1,9 @@
 <?php
 session_start();
 include("admin/db/db.php");
-if(isset($_SESSION['email'])){
-  $email = $_SESSION['email'];
-  $data = "SELECT * FROM user WHERE email='$email'";
+if(isset($_SESSION['email_id'])){
+  $email = $_SESSION['email_id'];
+  $data = "SELECT * FROM user WHERE email_id='$email'";
   $rs=$con->query($data);
   $row=$rs->fetch_assoc();
 }

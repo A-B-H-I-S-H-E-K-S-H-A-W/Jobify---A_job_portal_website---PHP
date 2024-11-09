@@ -7,7 +7,7 @@ if(isset($_POST['save'])){
     $pass = $_POST['password'];
 
     // Corrected SQL query syntax
-    $sel = "SELECT * FROM user WHERE email='$email' AND pass='$pass'";
+    $sel = "SELECT * FROM user WHERE email_id='$email' AND pass='$pass'";
     $result = $con->query($sel); // Execute the query
 
     if($result->num_rows > 0){
@@ -15,7 +15,7 @@ if(isset($_POST['save'])){
         $row = $result->fetch_assoc();
 
         // Store session data after successful login
-        $_SESSION['email'] = $row['email'];
+        $_SESSION['email_id'] = $row['email_id'];
         $_SESSION['id'] = $row['uid'];
         
         header("location: index.php");

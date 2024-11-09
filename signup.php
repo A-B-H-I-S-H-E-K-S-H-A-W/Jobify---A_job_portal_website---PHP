@@ -6,7 +6,7 @@ if(isset($_POST['save'])){
     $cpass = $_POST['cpassword'];
 
     if($pass === $cpass){
-        $ins = "INSERT INTO user SET email='$email', pass='$pass', cpass='$cpass' ";
+        $ins = "INSERT INTO user SET email_id='$email', pass='$pass', cpass='$cpass' ";
         $con->query($ins);
         header("location: Login.php");
     }else{
