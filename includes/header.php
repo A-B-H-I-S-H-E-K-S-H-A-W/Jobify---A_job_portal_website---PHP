@@ -27,7 +27,7 @@
         </div>
         <?php }else{ ?>
           <a href="settings.php" class="flex items-center gap-5">
-            <h2><?php echo $row['email']; ?></h2>
+            <h2><?php echo $row['email_id']; ?></h2>
             <?php if(!isset($row['profile'])){ ?>
               <img src="uploads/<?php echo $row['profile']; ?>" alt="Profile">
             <?php } else { ?>

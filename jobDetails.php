@@ -84,14 +84,23 @@ if(isset($_SESSION['email_id'])){
                 </div>
 
                 <div><p class="text-gray-400 text-sm">Posted 4 days ago</p></div>
-                <div></div>
+                <div><?php 
+                $email = isset($_SESSION['email_id']);
+
+                $sel_="SELECT * FROM user WHERE email_id='$email'";
+                $rs_= $con->query($sel_);
+                $row_= $rs_->fetch_assoc();
+                ?></div>
                 <div class="text-end">
-                  <?php if(isset($_SESSION['email'])){ ?>
+                  <?php if(isset($_SESSION['email_id']) && isset($row_['cv'])){ ?>
                     <a href="profile.php?id=<?php echo $row['jid']; ?>" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</a>
+                  <?php } else if(!isset($row_['cv'])) { 
+                    $err = "Warning : CV not uploaded in your profile";  ?>
+                    <button onclick="openModal('modelConfirm')" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</button>
                   <?php } else { ?>
                     <button onclick="openModal('modelConfirm')" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</button>
                   <?php } ?>
-                </div>
+                  </div>
               </div>
             </div>
 
@@ -111,11 +120,15 @@ if(isset($_SESSION['email_id'])){
                     </div>
 
                     <div class="p-6 pt-0 flex flex-col">
-                        <h2 class="text-2xl text-center font-bold mb-5 text-blue-900">Alert Message from Jobify</h2>
+                        <h2 class="text-2xl text-center font-bold mb-5 text-blue-900 border-b pb-3">Alert Message from Jobify</h2>
                         <!-- Content Area -->
-                        <span class="text-start text-lg font-medium mb-3 text-red-700 p-2 rounded-lg">Warning : Login First to Access</span>
-                        <div class="text-end">
-                          <button onclick="closeModal('modelConfirm')" type="button" class="px-4 py-2 rounded-lg bg-red-700 text-white font-semibold hover:ring-1 hover:ring-red-900 hover:bg-white hover:text-red-900 duration-300 ease-linear">Close</button>
+                        <span class="text-start text-lg font-medium mb-3 text-red-700 p-2 rounded-lg"><?php if(isset($err)){ echo $err; } else { echo "Warning : Login First to Access"; } ?></span>
+                        <div class="text-end border-t pt-5">
+                          <?php 
+                            if(isset($err)){ ?>
+                          <a href="personalInfo.php" class="mr-5 px-4 py-2 rounded-lg bg-green-500 text-white font-semibold hover:ring-1 hover:ring-green-900 hover:bg-white hover:text-green-900 duration-300 ease-linear">Enter Profile Details</a>
+                              <?php } ?>
+                          <button onclick="closeModal('modelConfirm')" type="button" class="px-4 py-2 rounded-lg bg-red-500 text-white font-semibold hover:ring-1 hover:ring-red-900 hover:bg-white hover:text-red-900 duration-300 ease-linear">Close</button>
                         </div>
                     </div>
                 </div>
