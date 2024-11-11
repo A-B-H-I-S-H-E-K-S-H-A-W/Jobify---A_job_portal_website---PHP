@@ -1,11 +1,8 @@
 <?php
 session_start();
 include("admin/db/db.php");
-if(isset($_SESSION['email_id'])){
-  $email = $_SESSION['email_id'];
-  $data = "SELECT * FROM user WHERE email_id='$email'";
-  $rs=$con->query($data);
-  $row=$rs->fetch_assoc();
+if(!isset($_SESSION['email_id'])){
+  header("location:index.php");
 }
 ?>
 
@@ -32,15 +29,7 @@ if(isset($_SESSION['email_id'])){
             <h2 class="text-3xl font-bold text-gray-600 my-12">Job Profile</h2>
           </div>
     
-          <?php
-          // Fetch job listings
-          $id=$_GET['jid'];
-          $sel = "SELECT recruiter.cname, recruiter.email, jobs.* 
-                  FROM recruiter 
-                  INNER JOIN jobs ON recruiter.cid = jobs.rid WHERE jid='$id'";  
-          $rs = $con->query($sel);
-          $row = $rs->fetch_assoc();
-          ?>
+          
           <!-- Job Button -->
 
           
@@ -48,6 +37,15 @@ if(isset($_SESSION['email_id'])){
           <div  class="text-start">
             <div class="grid grid-cols-1 gap-5 shadow-xl mt-5">
               <div class="h-full ring-1 ring-gray-400 p-6 rounded-xl flex flex-col gap-3">
+                <?php
+                // Fetch job listings
+                $id=$_GET['jid'];
+                $sel = "SELECT recruiter.cname, recruiter.email, jobs.* 
+                        FROM recruiter 
+                        INNER JOIN jobs ON recruiter.cid = jobs.rid WHERE jid='$id'";  
+                $rs = $con->query($sel);
+                $row = $rs->fetch_assoc();
+                ?>
                 <div class="flex flex-col items-start">
                 
                   <div class="flex justify-between w-full">
@@ -84,17 +82,10 @@ if(isset($_SESSION['email_id'])){
                 </div>
 
                 <div><p class="text-gray-400 text-sm">Posted 4 days ago</p></div>
-                <div><?php 
-                $email = isset($_SESSION['email_id']);
-
-                $sel_="SELECT * FROM user WHERE email_id='$email'";
-                $rs_= $con->query($sel_);
-                $row_= $rs_->fetch_assoc();
-                ?></div>
                 <div class="text-end">
-                  <?php if(isset($_SESSION['email_id']) && isset($row_['cv'])){ ?>
+                  <?php if(isset($_SESSION['email_id']) && isset($roww['cv'])){ ?>
                     <a href="profile.php?id=<?php echo $row['jid']; ?>" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</a>
-                  <?php } else if(!isset($row_['cv'])) { 
+                  <?php } else if(!isset($roww['cv'])) { 
                     $err = "Warning : CV not uploaded in your profile";  ?>
                     <button onclick="openModal('modelConfirm')" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</button>
                   <?php } else { ?>
