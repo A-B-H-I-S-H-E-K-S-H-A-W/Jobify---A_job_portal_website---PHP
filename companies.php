@@ -1,8 +1,8 @@
 <?php
 session_start();
 include("admin/db/db.php");
-if(!isset($_SESSION['email_id'])){
-  header("location:index.php");
+if(isset($_SESSION['email_id'])){
+  $emailopt = $_SESSION['email_id'];
 }
 ?>
 

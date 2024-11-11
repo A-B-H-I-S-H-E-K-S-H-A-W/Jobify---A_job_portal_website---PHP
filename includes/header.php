@@ -1,9 +1,13 @@
 <header class="px-5 w-full shadow-lg">
     <?php 
+
+    if(isset($_SESSION['email_id'])){
       $email = $_SESSION['email_id'];
       $data = "SELECT * FROM user WHERE email_id='$email'";
       $rset=$con->query($data);
       $roww=$rset->fetch_assoc();
+    }
+      
     ?>
       <div
         class="md:max-w-[1280px] mx-auto flex justify-between h-20 items-center"
@@ -34,7 +38,7 @@
         <?php }else{ ?>
           <a href="settings.php" class="flex items-center gap-5">
             <h2><?php echo $roww['email_id']; ?></h2>
-            <?php if(!isset($row['profile'])){ ?>
+            <?php if(isset($roww['profile'])){ ?>
               <img src="uploads/profile/<?php echo $roww['profile']; ?>" class="w-10 rounded-full ring-1" alt="Profile">
             <?php } else { ?>
               <img class="w-10 rounded-full ring-1" src="uploads/user.jpg" alt="Profile">

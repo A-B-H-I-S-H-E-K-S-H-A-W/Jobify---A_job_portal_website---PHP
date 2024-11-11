@@ -2,7 +2,7 @@
 session_start();
 include("admin/db/db.php");
 if(!isset($_SESSION['email_id'])){
-  header("location:index.php");
+  
 }
 ?>
 
