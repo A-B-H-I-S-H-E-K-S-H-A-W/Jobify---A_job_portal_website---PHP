@@ -27,7 +27,7 @@ if(isset($_SESSION['email_id'])){
     
 
     <div class="my-10 max-w-[1280px] mx-auto">
-    <h2 class="text-4xl font-semibold mb-5">Personal Info</h2>
+        <h2 class="text-4xl font-semibold mb-5">Personal Info</h2>
         <div class="border shadow-2xl w-full p-10">
             
             <div class="grid grid-cols-[30%_70%]">

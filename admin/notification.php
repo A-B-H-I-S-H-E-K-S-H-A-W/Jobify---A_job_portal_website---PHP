@@ -42,7 +42,7 @@ if(!isset($_SESSION['email'])){
               $sel = "SELECT  jobs.role, jobs.type, jobs.jcat, jobs.exp, user.* FROM jobs INNER JOIN user ON jobs.jid = user.conid";
               $rs = $con->query($sel);
               while($row = $rs->fetch_assoc()){ ?>
-              <a href="profile.php?id=<?php echo $row['uid']; ?>">
+              <a href="profile.php?uid=<?php echo $row['uid']; ?>">
                 <li class="flex justify-between gap-x-6 p-5 border rounded-xl shadow-xl mb-5">
                   <h3 class="my-4 font-semibold text-lg">Job Applicant : </h3>
                     <div class="flex min-w-0 gap-x-4">
@@ -54,7 +54,7 @@ if(!isset($_SESSION['email'])){
                     </div>
                     </div>
                     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                    <a href="profile.php" class="px-4 py-1 rounded-lg ring-1 ring-black">
+                    <a href="profile.php?uid=<?php echo $row['uid']; ?>" class="px-4 py-1 rounded-lg ring-1 ring-black">
                         View Profile
                     </a>
                     </div>
