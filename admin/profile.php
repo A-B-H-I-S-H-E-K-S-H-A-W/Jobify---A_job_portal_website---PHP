@@ -70,14 +70,12 @@ if(!isset($_SESSION['email'])){
                       </div>
                   </div>
                   <div class="flex justify-end">
-                    <button class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold mt-2 hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-300 ease-linear">Grant</button>
+                    <a href="" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold mt-2 hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-300 ease-linear">Send Interview Email</a>
                   </div>
                 </div>
             </div>
+          </div>
         </div>
-    </div>
-
-
       </div>
     </div>
   </body>
