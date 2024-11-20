@@ -31,7 +31,7 @@ if(isset($_SESSION['email_id'])){
     
           <?php
           // Fetch company listings
-          $seli = "SELECT * FROM recruiter";
+          $seli = "SELECT * FROM recruiter WHERE verify='verified'";
           $rsi = $con->query($seli);
           while ($row = $rsi->fetch_assoc()) {
           ?>
