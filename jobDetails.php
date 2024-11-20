@@ -84,14 +84,15 @@ if(isset($_SESSION['email_id'])){
 
                 <div><p class="text-gray-400 text-sm">Posted 4 days ago</p></div>
                 <div class="text-end">
-                  <?php if($roww['conid'] == $row['jid']) { ?>
+                  <?php if(isset($roww['conid']) == $row['jid']) { ?>
                     <button class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Applied</button>
                   <?php } else if(isset($_SESSION['email_id']) && isset($roww['cv'])){ ?>
                     <a href="operations/jobcon.php?id=<?php echo $roww['uid']; ?>&jid=<?php echo $row['jid'] ?>" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</a>
+                  
+                  <?php } else if(!isset($_SESSION['email_id'])) { ?>
+                      <button onclick="openModal('modelConfirm')" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</button>
                   <?php } else if(!isset($roww['cv'])) { 
                     $err = "Warning : CV not uploaded in your profile";  ?>
-                    <button onclick="openModal('modelConfirm')" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</button>
-                  <?php } else { ?>
                     <button onclick="openModal('modelConfirm')" class="px-4 py-2 rounded-lg bg-blue-900 text-white font-semibold hover:ring-1 hover:ring-blue-900 hover:bg-white hover:text-blue-900 duration-200 ease-linear">Apply Now</button>
                   <?php } ?>
                   </div>
