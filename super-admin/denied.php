@@ -34,7 +34,7 @@ if(!isset($_SESSION['name'])){
 
         <!-- Other content can go here -->
         <div class="p-10">
-          <h2 class="text-3xl text-gray-500">Company Details</h2>
+          <h2 class="text-3xl text-gray-500">Cancelled Company Details</h2>
                 <?php 
                     $deny='Cancelled';
                     $sel="SELECT * FROM recruiter WHERE verify='$deny'";

@@ -34,7 +34,7 @@ if(!isset($_SESSION['name'])){
 
         <!-- Other content can go here -->
         <div class="p-10">
-          <h2 class="text-3xl text-gray-500">Verification</h2>
+          <h2 class="text-3xl text-gray-500">Verified Company Details</h2>
 
           <div class="mt-10">
             <ul role="list" class="divide-y divide-gray-100">
