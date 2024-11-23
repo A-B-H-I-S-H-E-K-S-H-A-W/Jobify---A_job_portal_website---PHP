@@ -3,6 +3,8 @@ session_start();
 include("db/db.php");
 if(!isset($_SESSION['email'])){
   header("location: login.php");
+} else {
+  
 }
 ?>
 
@@ -34,7 +36,12 @@ if(!isset($_SESSION['email'])){
 
         <!-- Other content can go here -->
         <div class="p-10">
-          <h2 class="text-3xl text-gray-500">All Job Applied Candidates</h2>
+          <h2 class="text-3xl text-gray-500">All Job Applied Candidates <?php 
+                      if(isset($_GET['msg'])){
+                        $msg = $_GET['msg'];
+                    ?>
+                      <span class="inline-flex text-lg items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10"><?php if(isset($msg)){ echo $msg; }; ?></span>
+                    <?php } ?></h2>
 
           <div class="mt-10">
             <ul role="list" class="divide-y divide-gray-100">
