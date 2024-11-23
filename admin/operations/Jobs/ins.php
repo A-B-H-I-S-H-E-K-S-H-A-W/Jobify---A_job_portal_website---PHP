@@ -14,8 +14,9 @@ if(isset($_POST['save'])){
     $city=$_POST['city'];
     $state=$_POST['state'];
     $pin=$_POST['pin'];
+    $valid = "valid";
 
-    $ins="INSERT INTO jobs SET role='$jobrole', type='$jobtype', jcat='$jobcat', exp='$exprience', min_salary='$min', max_salary='$max', about='$about', country='$country', city='$city', state='$state', pin='$pin', rid='$cid' ";
+    $ins="INSERT INTO jobs SET role='$jobrole', type='$jobtype', jcat='$jobcat', exp='$exprience', min_salary='$min', max_salary='$max', about='$about', country='$country', city='$city', state='$state', pin='$pin', rid='$cid', valid='$valid' ";
     $con->query($ins);
     header("location:../../listjob.php");
 }else {
