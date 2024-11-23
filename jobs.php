@@ -31,9 +31,11 @@ if(!isset($_SESSION['email_id'])){
     
           <?php
           // Fetch job listings
+          $valid = "valid";
+          $verified = "verified";
           $sel = "SELECT recruiter.cname, recruiter.email, jobs.* 
                   FROM recruiter 
-                  INNER JOIN jobs ON recruiter.cid = jobs.rid WHERE verify='verified'";  
+                  INNER JOIN jobs ON recruiter.cid = jobs.rid WHERE verify='$verified' AND valid='$valid' ";  
           $rs = $con->query($sel);
           while ($row = $rs->fetch_assoc()) {
           ?>
