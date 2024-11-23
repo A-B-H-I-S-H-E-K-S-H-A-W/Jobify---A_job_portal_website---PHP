@@ -11,13 +11,6 @@ if(isset($_GET['submit'])){
     $duration = $_GET['duration'];
 }
 
-
-// echo $email;
-// echo $date;
-// echo $time;
-// echo $location;
-// echo $duration;
-
 $sel = "SELECT jobs.*, recruiter.* FROM jobs INNER JOIN recruiter ON jobs.rid = recruiter.cid WHERE email='$email'";
 $rs = $con->query($sel);
 $row = $rs->fetch_assoc();
