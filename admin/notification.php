@@ -7,6 +7,7 @@ if(!isset($_SESSION['email'])){
 
 if(isset($_GET['search'])){
   $cat = $_GET['jobcat'];
+  $count = 0;
 }
 ?>
 
@@ -38,17 +39,17 @@ if(isset($_GET['search'])){
 
         <!-- Other content can go here -->
         <div class="p-10">
-          <h2 class="text-3xl text-gray-500">All Job Applied Candidates <?php 
-                      if(isset($_GET['msg'])){
-                        $msg = $_GET['msg'];
-                    ?>
-                      <span class="inline-flex text-lg items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10"><?php if(isset($msg)){ echo $msg; }; ?></span>
-                    <?php } ?></h2>
+          <h2 class="text-3xl text-center text-gray-500"><?php 
+            if(isset($_GET['msg'])){
+              $msg = $_GET['msg'];
+          ?>
+            <span class="inline-flex text-lg items-center rounded-md bg-blue-50 px-4 py-2 font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10"><?php if(isset($msg)){ echo $msg; }; ?></span>
+          <?php } ?></h2>
 
           <div class="mt-5 text-center flex flex-col gap-2 items-center ">
             <h2 class="text-2xl text-blue-900 font-semibold">Search Job Applicants by Category</h2>
-            <form action="notification.php" action="GET">
-                  <select id="jobcat" name="jobcat" autocomplete="jobcat" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6">
+            <form action="notification.php" class="flex gap-5 items-center" action="GET">
+                  <select id="jobcat" name="jobcat" autocomplete="jobcat" class="block w-full rounded-md border-0 py-1.5 px-5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6">
                     <option value="All">All</option>
                     <option value="Full Stack Developer">Full Stack Developer</option>
                     <option value="Front-End Developer">Front-End Developer</option>
@@ -73,13 +74,15 @@ if(isset($_GET['search'])){
 
           <div class="mt-10">
             <ul role="list" class="divide-y divide-gray-100">
+            <h2 class="text-xl font-semibold"><?php if(isset($cat)){ echo $cat; } ?> Job Applicants :</h2>
               <?php
               if(isset($cat) && $cat != "All"){
               $sel = "SELECT jobs.role, jobs.type, jobs.jcat, jobs.exp, user.* FROM jobs INNER JOIN user ON jobs.jid = user.conid WHERE jcat='$cat' ";
               $rs = $con->query($sel);
-              while($row = $rs->fetch_assoc()){ ?>
+              
+              while($row = $rs->fetch_assoc()){  $count++ ?>
               <a href="profile.php?uid=<?php echo $row['uid']; ?>">
-                <li class="flex justify-between gap-x-6 p-5 border rounded-xl shadow-xl mb-5">
+                <li class="flex justify-between gap-x-6 p-5 border rounded-xl shadow-xl mb-2">
                   <h3 class="my-4 font-semibold text-lg">Job Applicant :</h3>
                     <div class="flex min-w-0 gap-x-4">
                     <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="../uploads/profile/<?php echo $row['profile'] ?>" alt="">
@@ -98,15 +101,18 @@ if(isset($_GET['search'])){
               </a>
               <?php } ?>
               <?php } ?>
+              
             </ul>
           </div>
-          <div class="mt-10">
+          <div class="mt-4">
             <ul role="list" class="divide-y divide-gray-100">
+              
               <?php
-              if($cat == "All"){
+              if(isset($cat)){
+                if($cat == "All"){
               $sel = "SELECT jobs.role, jobs.type, jobs.jcat, jobs.exp, user.* FROM jobs INNER JOIN user ON jobs.jid = user.conid";
               $rs = $con->query($sel);
-              while($row = $rs->fetch_assoc()){ ?>
+              while($row = $rs->fetch_assoc()){ $count++ ?>
               <a href="profile.php?uid=<?php echo $row['uid']; ?>">
                 <li class="flex justify-between gap-x-6 p-5 border rounded-xl shadow-xl mb-5">
                   <h3 class="my-4 font-semibold text-lg">Job Applicant :</h3>
@@ -127,8 +133,16 @@ if(isset($_GET['search'])){
               </a>
               <?php } ?>
               <?php } ?>
+              <?php } ?>
+              
             </ul>
+            
           </div>
+          <?php if(isset($count)){ if($count == 0){ ?>
+              <div class="flex text-center justify-center mx-auto h-[100%] items-center">
+                <h2 class="text-3xl font-semibold text-blue-900"><?php echo $count; ?> Applicants Found</h2>
+              </div>
+            <?php } } ?>
         </div>
       </div>
     </div>
