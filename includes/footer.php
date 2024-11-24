@@ -20,7 +20,7 @@
           <ul class="flex flex-col gap-5 text-sm">
             <li><a href="index.php">Home</a></li>
             <li><a href="jobs.php">Jobs</a></li>
-            <li><a href="jobs.php?internship=Internship">Internships</a></li>
+            <li><a href="jobs.php?Internship=Internship">Internships</a></li>
             <li><a href="jobs.php?startup=startup">Start-up's</a></li>
             <li><a href="services.php">Services</a></li>
           </ul>
