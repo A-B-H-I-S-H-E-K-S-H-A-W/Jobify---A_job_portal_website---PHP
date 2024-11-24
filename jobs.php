@@ -228,7 +228,7 @@ if(isset($_GET['search'])){
           <?php } ?>
 
 
-          <?php if($count == 0){ ?>
+          <?php if($count == 0 && !isset($internship)){ ?>
             <div class="h-[40vh] flex justify-center items-center">
               <h2 class="text-3xl font-bold text-center text-gray-600 my-10">No Available Jobs</h2>
             </div>
