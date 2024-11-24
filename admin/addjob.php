@@ -71,7 +71,7 @@ if(!isset($_SESSION['email'])){
                         <option value="Full Time">Full Time</option>
                         <option value="Part Time">Part Time</option>
                         <option value="Night Shift">Night Shift</option>
-                        <option value="Intership">Internship</option>
+                        <option value="Internship">Internship</option>
                         </select>
                     </div>
                     </div>
