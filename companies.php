@@ -4,6 +4,32 @@ include("admin/db/db.php");
 if(isset($_SESSION['email_id'])){
   $emailopt = $_SESSION['email_id'];
 }
+$res = "all";
+if(isset($_GET['search'])){
+  $input = $_GET['inputSearch'];
+
+  $trim = trim($input);
+  $lower = strtolower($trim);
+
+  $str = $lower;
+
+  $pattern = "/" . preg_quote($str, '/') . "/i";
+
+  $select = "SELECT * FROM recruiter WHERE verify='verified'";
+  $rss = $con->query($select);
+  $rows = array();
+  while ($rowe = $rss->fetch_assoc()) {
+    $rows[] = $rowe['cname'];
+  }
+
+  $res = null;
+  foreach($rows as $ele){
+    if(preg_match($pattern, $ele)){
+      $res = $ele;
+      break;
+    }
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,15 +51,63 @@ if(isset($_SESSION['email_id'])){
   <body>
     <?php include("includes/header.php"); ?>
     <div class="max-w-[1280px] mx-auto px-10">
+
+
+
+    <div class="mt-20">
+            <div class="max-w-[1280px] mx-auto">
+              <div class="title text-center">
+                <h2 class="text-4xl font-bold text-blue-700">
+                  Search for top companies
+                </h2>
+                <p class="mt-3">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde,
+                  consequatur.
+                </p>
+              </div>
+              <div
+                class="flex justify-center mx-auto my-5 px-5 max-w-[400px] ring-1 rounded-3xl shadow-xl"
+              >
+                <form action="" method="GET" class="flex gap-3 flex-col md:flex-row items-center">
+                  <div class="flex gap-3 items-center px-1 my-1 md:my-0">
+                    <i class="fa-solid fa-building text-base md:text-lg"></i>
+                    <input placeholder="Search Company" type="text" name="inputSearch" class="py-3 rounded-3xl md:px-10 px-16 bg-gray-50" id="">
+                  </div>
+                  <button name="search" class="hidden md:block">
+                    <i
+                      class="fa-solid fa-magnifying-glass hover:text-lg duration-100"
+                    ></i>
+                  </button>
+                  <button
+                    name="search"
+                    class="block md:hidden px-36 py-2 my-2 bg-blue-900 text-white hover:bg-white hover:ring-1 hover:text-blue-900 duration-300 rounded-3xl border"
+                  >
+                    Search
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+
+
           <div>
             <h2 class="text-3xl font-bold text-gray-600 my-16">All Available Companies</h2>
           </div>
-    
+
+              
           <?php
           // Fetch company listings
-          $seli = "SELECT * FROM recruiter WHERE verify='verified'";
+
+          if($res == "all"){
+            $seli = "SELECT * FROM recruiter WHERE verify='verified' ";
+          } else {
+            $seli = "SELECT * FROM recruiter WHERE verify='verified' AND cname='$res'";
+          }
           $rsi = $con->query($seli);
-          while ($row = $rsi->fetch_assoc()) {
+          $countCompany = 0;
+          while ($row = $rsi->fetch_assoc()) { $countCompany++
           ?>
           <!-- Comapny Card -->
           <div  class="text-start">
@@ -63,7 +137,7 @@ if(isset($_SESSION['email_id'])){
                   ?></p>
                   
                 </div>
-                </a>
+              </a>
                 <?php } else { ?>
                       <div class="flex flex-col items-start">
                       
@@ -87,7 +161,15 @@ if(isset($_SESSION['email_id'])){
                         
                       </div>
                 <?php } ?>
+                </div>
+                </div>
               </div>
+          <?php } ?>
+
+          <?php if($countCompany == 0){ ?>
+            <div class="h-[40vh]">
+            <div class="flex justify-center items-center">
+              <h2 class="text-3xl text-blue-900 font-semibold">No Companies Found</h2>
             </div>
           </div>
           <?php } ?>
