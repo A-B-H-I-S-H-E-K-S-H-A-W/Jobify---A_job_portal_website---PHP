@@ -42,15 +42,17 @@ if(isset($_SESSION['email_id'])){
         <div
           class="flex justify-center mx-auto my-5 px-5 max-w-[600px] ring-1 rounded-3xl shadow-xl"
         >
-          <form class="flex gap-3 flex-col md:flex-row items-center">
+          <form action="jobs.php" method="GET" class="flex gap-3 flex-col md:flex-row items-center">
             <div class="flex gap-3 items-center px-1 my-1 md:my-0">
               <i class="fa-solid fa-building text-base md:text-lg"></i>
               <select
                 class="py-3 rounded-3xl md:px-3 px-16 bg-gray-50"
                 placeholder="Seacrh for Location"
                 type="text"
+                name="jobcat"
               >
-              <option value="">-- Select Job Role --</option>
+              <option value="All">-- Select Job Category --</option>
+              <option value="All">All</option>
               <option value="Full Stack Developer">Full Stack Developer</option>
               <option value="Front-End Developer">Front-End Developer</option>
               <option value="Back-End Developer">Back-End Developer</option>
@@ -75,8 +77,10 @@ if(isset($_SESSION['email_id'])){
                 class="py-3 rounded-3xl md:px-3 px-16 bg-gray-50"
                 placeholder="Seacrh for Location"
                 type="text"
+                name="state"
               >
-              <option value="">-- Select Location --</option>
+              <option value="All">-- Select Location --</option>
+              <option value="All">All</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
               <option value="Assam">Assam</option>
@@ -115,12 +119,13 @@ if(isset($_SESSION['email_id'])){
               <option value="Jammu and Kashmir">Jammu and Kashmir</option>
             </select>
             </div>
-            <button class="hidden md:block">
+            <button name="search" class="hidden md:block">
               <i
                 class="fa-solid fa-magnifying-glass hover:text-lg duration-100"
               ></i>
             </button>
             <button
+              name="search"
               class="block md:hidden px-36 py-2 my-2 bg-blue-900 text-white hover:bg-white hover:ring-1 hover:text-blue-900 duration-300 rounded-3xl border"
             >
               Search
