@@ -17,6 +17,7 @@ $startup = $_GET['startup'];
 $jobcat = "All";
 $state= "All";
 $count = 0;
+$counti = 0;
 if(isset($_GET['search'])){
   $jobcat = $_GET['jobcat'];
   $state = $_GET['state'];
@@ -56,7 +57,9 @@ if(isset($_GET['search'])){
                   consequatur.
                 </p>
               </div>
-              <div
+
+              <?php if(!isset($internship)){ ?>
+            <div
                 class="flex justify-center mx-auto my-5 px-5 max-w-[600px] ring-1 rounded-3xl shadow-xl"
               >
                 <form action="" method="GET" class="flex gap-3 flex-col md:flex-row items-center">
@@ -150,6 +153,7 @@ if(isset($_GET['search'])){
                 </form>
               </div>
             </div>
+            <?php } ?>
           </div>
 
 
@@ -250,7 +254,7 @@ if(isset($_GET['search'])){
                 FROM recruiter 
                 INNER JOIN jobs ON recruiter.cid = jobs.rid WHERE verify='$verified' AND valid='$valid' AND type='$internship'";        
               $rs = $con->query($sel);
-              while ($row = $rs->fetch_assoc()) { $count++
+              while ($row = $rs->fetch_assoc()) { $counti++
               ?>
               <!-- Job Button -->
 
@@ -303,8 +307,16 @@ if(isset($_GET['search'])){
           <?php } ?>
 
 
+          <?php if($counti == 0 && isset($internship)){ ?>
+            <div class="h-[40vh] flex justify-center items-center">
+              <h2 class="text-3xl font-bold text-center text-gray-600 my-10">No Available Internships</h2>
+            </div>
+          <?php } ?>
 
 
+
+
+      </div>
       </div>
     <?php include("includes/footer.php"); ?>
   </body>
